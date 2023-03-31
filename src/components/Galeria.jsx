@@ -3,9 +3,13 @@ import { MyContext } from "../context/MyContext";
 import Heart from "./Heart";
 
 const Galeria = () => {
-  const  fotos = useContext(MyContext);
+  const  {fotos, setFotos} = useContext(MyContext);
 const handleClick = (id)=>{
-    console.log('me diste click en el id', id)
+    const fotoIndex = fotos.findIndex((f) => f.id === id);
+    console.log(fotoIndex)
+    fotos[fotoIndex].favorito = !fotos[fotoIndex].favorito;
+    console.log(fotos[fotoIndex].favorito)
+    setFotos([...fotos]);
 }
   
   return (
